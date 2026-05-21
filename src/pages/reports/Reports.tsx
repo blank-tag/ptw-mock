@@ -1,6 +1,6 @@
 import {
   BarChart, Bar, AreaChart, Area, LineChart, Line,
-  XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell,
+  XAxis, YAxis, Tooltip, ResponsiveContainer,
 } from "recharts";
 import { ncTrend, permitVolume, mockContractors } from "../../data/mockData";
 

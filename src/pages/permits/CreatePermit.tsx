@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CheckCircle, AlertTriangle, XCircle, ChevronRight, ChevronLeft, Shield, Info, Upload, X } from "lucide-react";
 import { PERMIT_TYPES, CERT_MAPPING, HAZARD_LIBRARY, CONTROL_LIBRARY } from "../../data/mockData";

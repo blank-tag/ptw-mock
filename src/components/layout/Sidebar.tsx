@@ -26,7 +26,7 @@ const ALL_NAV_ITEMS = [
   { to: "/admin", icon: Settings, label: "Admin Panel" },
 ];
 
-export default function Sidebar({ collapsed, onToggle, isTablet, role }: SidebarProps) {
+export default function Sidebar({ collapsed, onToggle, isTablet: _isTablet, role }: SidebarProps) {
   const navItems = ALL_NAV_ITEMS.filter(item => role.navItems.includes(item.to));
 
   return (

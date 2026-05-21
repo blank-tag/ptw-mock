@@ -1,7 +1,6 @@
 import { useState } from "react";
 import {
-  Pause, StopCircle, XCircle, RefreshCw, Clock, Users,
-  AlertTriangle, CheckCircle, Activity, MapPin,
+  StopCircle, Clock, Users, AlertTriangle,
 } from "lucide-react";
 import {
   getPermitTypeInfo, formatCountdown, getCountdownClass, getStatusColor, getStatusBg,

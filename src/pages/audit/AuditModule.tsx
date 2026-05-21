@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Video, Camera, ClipboardList, AlertTriangle, CheckCircle, XCircle, Eye } from "lucide-react";
+import { Video, Camera, ClipboardList, CheckCircle, XCircle } from "lucide-react";
 import {
-  mockPermits, mockNCs, mockAudits, getPermitTypeInfo, getStatusBg, getStatusColor,
+  mockPermits, mockNCs, mockAudits, getPermitTypeInfo,
 } from "../../data/mockData";
 import type { NonConformance } from "../../types";
 

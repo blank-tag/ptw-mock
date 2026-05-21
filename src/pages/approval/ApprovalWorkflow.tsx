@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CheckCircle, XCircle, ShieldAlert, AlertTriangle, ChevronRight, User, Clock, ArrowLeft } from "lucide-react";
+import { CheckCircle, ShieldAlert, AlertTriangle, ChevronRight, User, Clock, ArrowLeft } from "lucide-react";
 import { getStatusColor, getStatusBg, getPermitTypeInfo } from "../../data/mockData";
 import type { Permit } from "../../types";
 import { useStore } from "../../store/AppStore";
@@ -380,7 +380,7 @@ function ApprovalDetail({ permit, onClose }: { permit: Permit; onClose: () => vo
   );
 }
 
-export default function ApprovalWorkflow({ viewMode }: { viewMode: "web" | "tablet" }) {
+export default function ApprovalWorkflow({ viewMode: _viewMode }: { viewMode: "web" | "tablet" }) {
   const { state, role } = useStore();
   const [selected, setSelected] = useState<Permit | null>(null);
 

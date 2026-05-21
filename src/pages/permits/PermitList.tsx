@@ -10,7 +10,7 @@ const ALL_STATUSES: PermitStatus[] = [
   "Approved", "Active", "Revalidation Required", "Suspended", "Closed", "Cancelled", "Rejected",
 ];
 
-export default function PermitList({ viewMode }: { viewMode: "web" | "tablet" }) {
+export default function PermitList({ viewMode: _viewMode }: { viewMode: "web" | "tablet" }) {
   const navigate = useNavigate();
   const { state } = useStore();
   const [search, setSearch] = useState("");

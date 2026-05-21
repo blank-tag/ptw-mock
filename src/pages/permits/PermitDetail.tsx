@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { getPermitTypeInfo, getStatusBg, getStatusColor, formatCountdown, getCountdownClass } from "../../data/mockData";
-import { CheckCircle, AlertTriangle, Clock, Users, MapPin, Shield, XCircle } from "lucide-react";
+import { CheckCircle, AlertTriangle, Clock, Shield, XCircle } from "lucide-react";
 import { useStore } from "../../store/AppStore";
 
 export default function PermitDetail() {

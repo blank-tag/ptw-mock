@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CheckCircle, Lock, FileText, Award } from "lucide-react";
+import { Lock, FileText, Award } from "lucide-react";
 import { getPermitTypeInfo, getStatusColor, getStatusBg } from "../../data/mockData";
 import { useStore } from "../../store/AppStore";
 import type { Permit } from "../../types";
