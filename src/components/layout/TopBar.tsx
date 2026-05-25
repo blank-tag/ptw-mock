@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Monitor, Tablet, Bell, Plus, AlertTriangle, ChevronDown, User } from "lucide-react";
+import { Monitor, Tablet, Bell, Plus, AlertTriangle, ChevronDown, User, LogOut } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { ROLES, type RoleId, type RolePersona } from "../../data/roles";
 
@@ -9,9 +9,10 @@ interface TopBarProps {
   title: string;
   role: RolePersona;
   onRoleChange: (id: RoleId) => void;
+  onLogout?: () => void;
 }
 
-export default function TopBar({ viewMode, onToggleView, title, role, onRoleChange }: TopBarProps) {
+export default function TopBar({ viewMode, onToggleView, title, role, onRoleChange, onLogout }: TopBarProps) {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -128,6 +129,16 @@ export default function TopBar({ viewMode, onToggleView, title, role, onRoleChan
         <Bell size={14} />
         <span style={{ position: "absolute", top: 6, right: 7, width: 7, height: 7, background: "#DC2626", borderRadius: "50%", border: "1.5px solid #FFFFFF" }} />
       </button>
+
+      {onLogout && (
+        <button
+          onClick={onLogout}
+          title="Sign out"
+          style={{ background: "none", border: "1px solid #E5E7EB", borderRadius: 8, width: 34, height: 34, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", color: "#6A6A6A" }}
+        >
+          <LogOut size={14} />
+        </button>
+      )}
     </header>
   );
 }

@@ -12,7 +12,9 @@ import AuditModule from "./pages/audit/AuditModule";
 import PermitClosure from "./pages/closure/PermitClosure";
 import Reports from "./pages/reports/Reports";
 import ContractorPortal from "./pages/contractor/ContractorPortal";
+import ContractorInvite from "./pages/contractor/ContractorInvite";
 import AdminPanel from "./pages/admin/AdminPanel";
+import Login from "./pages/Login";
 import { StoreProvider, useStore } from "./store/AppStore";
 import { useState } from "react";
 import type { RoleId } from "./data/roles";
@@ -35,6 +37,7 @@ function AppContent() {
   const { role, dispatch } = useStore();
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [viewMode, setViewMode] = useState<"web" | "tablet">("web");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -44,12 +47,32 @@ function AppContent() {
   const title = PAGE_TITLES[location.pathname] ?? PAGE_TITLES[pathKey] ?? "PTW System";
   const isTablet = viewMode === "tablet";
 
-  function handleRoleChange(id: RoleId) {
+  function handleLogin(id: RoleId) {
     dispatch({ type: "SET_ROLE", id });
-    // Navigate to the role's default landing route
+    setIsLoggedIn(true);
     import("./data/roles").then(({ getRoleById }) => {
       navigate(getRoleById(id).defaultRoute);
     });
+  }
+
+  function handleRoleChange(id: RoleId) {
+    dispatch({ type: "SET_ROLE", id });
+    import("./data/roles").then(({ getRoleById }) => {
+      navigate(getRoleById(id).defaultRoute);
+    });
+  }
+
+  function handleLogout() {
+    setIsLoggedIn(false);
+    navigate("/");
+  }
+
+  if (!isLoggedIn && !location.pathname.startsWith("/invite/")) {
+    return <Login onLogin={handleLogin} />;
+  }
+
+  if (location.pathname.startsWith("/invite/")) {
+    return <ContractorInvite />;
   }
 
   return (
@@ -67,6 +90,7 @@ function AppContent() {
           onToggleView={() => setViewMode(v => v === "web" ? "tablet" : "web")}
           role={role}
           onRoleChange={handleRoleChange}
+          onLogout={handleLogout}
         />
         <main style={{ flex: 1, overflowY: "auto" }}>
           {isTablet && (
@@ -86,6 +110,7 @@ function AppContent() {
             <Route path="/closure" element={<PermitClosure viewMode={viewMode} />} />
             <Route path="/reports" element={<Reports viewMode={viewMode} />} />
             <Route path="/contractor" element={<ContractorPortal viewMode={viewMode} />} />
+            <Route path="/invite/:token" element={<ContractorInvite />} />
             <Route path="/admin" element={<AdminPanel />} />
           </Routes>
         </main>
